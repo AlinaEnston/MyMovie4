@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="favorites" type="id" />
+    <item name="watch_later" type="id" />
+    <item name="selections" type="id" />
+</resources>
