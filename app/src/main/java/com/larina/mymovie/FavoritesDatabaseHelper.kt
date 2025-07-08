@@ -5,7 +5,9 @@ import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 
-class FavoritesDatabaseHelper(context: Context) : SQLiteOpenHelper(context, "favorites.db", null, 1) {
+class FavoritesDatabaseHelper : SQLiteOpenHelper {
+
+    constructor(context: Context) : super(context, "favorites.db", null, 1)
 
     override fun onCreate(db: SQLiteDatabase) {
         val createTable = """
