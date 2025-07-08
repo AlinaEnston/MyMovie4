@@ -15,7 +15,8 @@ class FavoritesDatabaseHelper : SQLiteOpenHelper {
               id INTEGER PRIMARY KEY AUTOINCREMENT,
               title TEXT NOT NULL,
               description TEXT NOT NULL,
-              poster INTEGER NOT NULL
+              poster INTEGER NOT NULL,
+              rating REAL NOT NULL  -- Добавлено поле rating
             )
         """.trimIndent()
         db.execSQL(createTable)
@@ -32,6 +33,7 @@ class FavoritesDatabaseHelper : SQLiteOpenHelper {
             put("title", film.title)
             put("description", film.description)
             put("poster", film.poster)
+            put("rating", film.rating)  // Добавлено поле rating
         }
         val result = db.insert("favorites", null, values)
         db.close()
@@ -63,7 +65,8 @@ class FavoritesDatabaseHelper : SQLiteOpenHelper {
                 val title = cursor.getString(cursor.getColumnIndexOrThrow("title"))
                 val description = cursor.getString(cursor.getColumnIndexOrThrow("description"))
                 val poster = cursor.getInt(cursor.getColumnIndexOrThrow("poster"))
-                films.add(Film(title, poster, description))
+                val rating = cursor.getFloat(cursor.getColumnIndexOrThrow("rating"))
+                films.add(Film(title, poster, description, rating))
             } while (cursor.moveToNext())
         }
         cursor.close()

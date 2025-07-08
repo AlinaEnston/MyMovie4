@@ -8,6 +8,13 @@ android {
     namespace = "com.larina.mymovie"
     compileSdk = 35
 
+    buildFeatures {
+        viewBinding = true
+    }
+    buildFeatures {
+        dataBinding = true
+    }
+
     defaultConfig {
         applicationId = "com.larina.mymovie"
         minSdk = 27
