@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.larina.mymovie.databinding.FragmentFavoritesBinding
+import com.larina.mymovie.view.MainActivity
 
 class FavoritesFragment : Fragment() {
     private lateinit var binding: FragmentFavoritesBinding
