@@ -1,9 +1,10 @@
-package com.larina.mymovie
+package com.larina.mymovie.view.rv_viewholders
 
 import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import com.larina.mymovie.domain.Film
 
 class FavoritesDatabaseHelper : SQLiteOpenHelper {
 

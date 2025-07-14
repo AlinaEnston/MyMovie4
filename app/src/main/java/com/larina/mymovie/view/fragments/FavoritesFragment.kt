@@ -1,15 +1,19 @@
-package com.larina.mymovie
+package com.larina.mymovie.view.fragments
 
 import FilmListRecyclerAdapter
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.larina.mymovie.view.rv_viewholders.FavoritesDatabaseHelper
+import com.larina.mymovie.R
+import com.larina.mymovie.view.rv_adapters.TopSpacingItemDecoration
 import com.larina.mymovie.databinding.FragmentFavoritesBinding
-import com.larina.mymovie.view.MainActivity
+import com.larina.mymovie.domain.Film
+import com.larina.mymovie.MainActivity
 
 class FavoritesFragment : Fragment() {
     private lateinit var binding: FragmentFavoritesBinding

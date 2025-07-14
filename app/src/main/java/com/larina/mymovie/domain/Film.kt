@@ -1,4 +1,4 @@
-package com.larina.mymovie
+package com.larina.mymovie.domain
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

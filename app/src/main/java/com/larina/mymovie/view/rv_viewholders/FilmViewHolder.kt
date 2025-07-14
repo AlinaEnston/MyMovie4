@@ -1,9 +1,7 @@
-package com.larina.mymovie
-
-import android.R.attr.title
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.larina.mymovie.databinding.FilmItemBinding
+import com.larina.mymovie.domain.Film
 
 class FilmViewHolder(
     private val binding: FilmItemBinding,
@@ -17,10 +15,11 @@ class FilmViewHolder(
             .centerCrop()
             .into(binding.poster)
         binding.description.text = film.description
-        binding.ratingDonut.progress = (film.rating * 10).toInt()
+        binding.ratingDonut.setProgress((film.rating * 10).toInt()) // Используем метод setProgress
 
         binding.root.setOnClickListener {
             onItemClickListener.click(film)
         }
     }
 }
+   

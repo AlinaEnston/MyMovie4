@@ -1,4 +1,4 @@
-package com.larina.mymovie
+package com.larina.mymovie.view.fragments
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,7 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.larina.mymovie.view.rv_viewholders.FavoritesDatabaseHelper
+import com.larina.mymovie.R
 import com.larina.mymovie.databinding.FragmentDetailsBinding
+import com.larina.mymovie.domain.Film
 
 class DetailsFragment : Fragment() {
     private var _binding: FragmentDetailsBinding? = null
@@ -55,12 +58,12 @@ class DetailsFragment : Fragment() {
     private fun shareFilm(film: Film) {
         // Создаем интент для совместного использования
         val intent = Intent().apply {
-            action = Intent.ACTION_SEND
+            action = Intent.ACTION_SEND // Исправлено
             putExtra(
                 Intent.EXTRA_TEXT,
                 "Check out this film: ${film.title} \n\n ${film.description}"
             )
-            type = "text/plain"
+            type = "text/plain" // Исправлено
         }
         // Запускаем активити для выбора приложения для совместного использования
         startActivity(Intent.createChooser(intent, "Share To:"))
@@ -92,4 +95,3 @@ class DetailsFragment : Fragment() {
         _binding = null // Освобождаем binding, чтобы избежать утечек памяти
     }
 }
-   

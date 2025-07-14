@@ -14,10 +14,10 @@
         android:name=".App"
         tools:targetApi="31">
         <activity
-            android:name=".DetailsFragment"
+            android:name=".view.fragments.DetailsFragment"
             android:exported="false" />
         <activity
-            android:name=".view.MainActivity"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
