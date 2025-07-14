@@ -3,23 +3,27 @@ package com.larina.mymovie
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.larina.mymovie.databinding.ActivityMainBinding
+import com.larina.mymovie.domain.Film
+import com.larina.mymovie.view.fragments.DetailsFragment
+import com.larina.mymovie.view.fragments.FavoritesFragment
+import com.larina.mymovie.view.fragments.HomeFragment
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var topAppBar: MaterialToolbar
+    private lateinit var binding: ActivityMainBinding
     private lateinit var bottomNavigationView: BottomNavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_main)
+        // Инициализируем объект
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        // Передаем его в метод
+        setContentView(binding.root)
 
-
-        bottomNavigationView = findViewById(R.id.bottom_navigation)
+        bottomNavigationView = binding.bottomNavigation // Используем binding для доступа к bottomNavigation
         bottomNavigationView.setOnNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.favorites -> {
@@ -40,7 +44,6 @@ class MainActivity : AppCompatActivity() {
                 }
                 else -> false
             }
-
         }
 
         // Устанавливаем начальный фрагмент
@@ -60,6 +63,11 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         })
+    }
+
+    override fun onStart() {
+        super.onStart()
+        // Здесь не было вызова презентера
     }
 
     private fun showExitConfirmationDialog() {

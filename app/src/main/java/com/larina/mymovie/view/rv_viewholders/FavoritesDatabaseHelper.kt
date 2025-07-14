@@ -1,11 +1,14 @@
-package com.larina.mymovie
+package com.larina.mymovie.view.rv_viewholders
 
 import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import com.larina.mymovie.domain.Film
 
-class FavoritesDatabaseHelper(context: Context) : SQLiteOpenHelper(context, "favorites.db", null, 1) {
+class FavoritesDatabaseHelper : SQLiteOpenHelper {
+
+    constructor(context: Context) : super(context, "favorites.db", null, 1)
 
     override fun onCreate(db: SQLiteDatabase) {
         val createTable = """
@@ -13,7 +16,8 @@ class FavoritesDatabaseHelper(context: Context) : SQLiteOpenHelper(context, "fav
               id INTEGER PRIMARY KEY AUTOINCREMENT,
               title TEXT NOT NULL,
               description TEXT NOT NULL,
-              poster INTEGER NOT NULL
+              poster INTEGER NOT NULL,
+              rating REAL NOT NULL  -- Добавлено поле rating
             )
         """.trimIndent()
         db.execSQL(createTable)
@@ -30,6 +34,7 @@ class FavoritesDatabaseHelper(context: Context) : SQLiteOpenHelper(context, "fav
             put("title", film.title)
             put("description", film.description)
             put("poster", film.poster)
+            put("rating", film.rating)  // Добавлено поле rating
         }
         val result = db.insert("favorites", null, values)
         db.close()
@@ -61,7 +66,8 @@ class FavoritesDatabaseHelper(context: Context) : SQLiteOpenHelper(context, "fav
                 val title = cursor.getString(cursor.getColumnIndexOrThrow("title"))
                 val description = cursor.getString(cursor.getColumnIndexOrThrow("description"))
                 val poster = cursor.getInt(cursor.getColumnIndexOrThrow("poster"))
-                films.add(Film(title, poster, description))
+                val rating = cursor.getFloat(cursor.getColumnIndexOrThrow("rating"))
+                films.add(Film(title, poster, description, rating))
             } while (cursor.moveToNext())
         }
         cursor.close()
