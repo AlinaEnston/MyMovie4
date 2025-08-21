@@ -1,4 +1,4 @@
-package com.larina.mymovie
+package com.larina.mymovie.data.Entity
 
 import android.app.Application
 import com.larina.mymovie.data.MainRepository

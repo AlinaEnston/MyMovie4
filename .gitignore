@@ -13,3 +13,12 @@
 .externalNativeBuild
 .cxx
 local.properties
+# Игнорировать файл с API ключом
+api_key.properties
+
+# Игнорировать папку build
+/build/
+
+# Игнорировать файлы временных данных
+*.tmp
+*.log
