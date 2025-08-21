@@ -1,5 +1,6 @@
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.larina.mymovie.data.Entity.API.ApiConstants
 import com.larina.mymovie.databinding.FilmItemBinding
 import com.larina.mymovie.domain.Film
 
@@ -11,7 +12,7 @@ class FilmViewHolder(
     fun bind(film: Film) {
         binding.title.text = film.title
         Glide.with(binding.root)
-            .load(film.poster)
+            .load(ApiConstants.IMAGES_URL + "w342" + film.poster)
             .centerCrop()
             .into(binding.poster)
         binding.description.text = film.description

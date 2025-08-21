@@ -67,11 +67,12 @@ class FavoritesDatabaseHelper : SQLiteOpenHelper {
                 val description = cursor.getString(cursor.getColumnIndexOrThrow("description"))
                 val poster = cursor.getInt(cursor.getColumnIndexOrThrow("poster"))
                 val rating = cursor.getFloat(cursor.getColumnIndexOrThrow("rating"))
-                films.add(Film(title, poster, description, rating))
+                films.add(Film(title, poster.toString(), description, rating.toDouble())) // Convert to Double
             } while (cursor.moveToNext())
         }
         cursor.close()
         db.close()
         return films
     }
+
 }

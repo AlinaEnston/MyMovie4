@@ -6,8 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.bumptech.glide.Glide
 import com.larina.mymovie.view.rv_viewholders.FavoritesDatabaseHelper
 import com.larina.mymovie.R
+import com.larina.mymovie.data.Entity.API.ApiConstants
 import com.larina.mymovie.databinding.FragmentDetailsBinding
 import com.larina.mymovie.domain.Film
 
@@ -38,6 +40,12 @@ class DetailsFragment : Fragment() {
             // Устанавливаем данные фильма в интерфейс через Data Binding
             binding.film = film
             binding.executePendingBindings() // Обновляем интерфейс
+
+            // Загружаем изображение постера с помощью Glide
+            Glide.with(this)
+                .load(ApiConstants.IMAGES_URL + "w780" + film.poster)
+                .centerCrop()
+                .into(binding.detailsPoster)
 
             // Устанавливаем обработчик нажатия на кнопку "Поделиться"
             binding.detailsFab.setOnClickListener {
