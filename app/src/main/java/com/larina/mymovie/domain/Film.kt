@@ -2,6 +2,7 @@ package com.larina.mymovie.domain
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
+import retrofit2.Converter
 
 @Parcelize
 data class Film(
@@ -10,4 +11,6 @@ data class Film(
     val description: String,
     var rating: Double = 0.0, //Приходит не целое число с API
     var isInFavorites: Boolean = false
+
+
 ) : Parcelable

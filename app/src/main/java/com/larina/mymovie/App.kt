@@ -1,9 +1,9 @@
 package com.larina.mymovie
 
+import MainRepository
 import android.app.Application
 import com.larina.mymovie.data.Entity.API.ApiConstants
 import com.larina.mymovie.data.Entity.TmdbApi
-import com.larina.mymovie.data.MainRepository
 import com.larina.mymovie.domain.Interactor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor

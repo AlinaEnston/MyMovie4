@@ -24,7 +24,6 @@ class HomeFragment : Fragment() {
     private lateinit var searchView: SearchView
 
     private var filmsDataBase = listOf<Film>()
-        // Используем backing field
         set(value) {
             if (field == value) return
             field = value
@@ -32,7 +31,7 @@ class HomeFragment : Fragment() {
         }
 
     private val viewModel by lazy {
-        ViewModelProvider(this).get(HomeFragmentViewModel::class.java) // Исправлено
+        ViewModelProvider(this).get(HomeFragmentViewModel::class.java)
     }
 
     override fun onCreateView(
@@ -46,8 +45,8 @@ class HomeFragment : Fragment() {
         recyclerView = view.findViewById(R.id.main_recycler)
         searchView = view.findViewById(R.id.search_view)
 
-        viewModel.filmsListLiveData.observe(viewLifecycleOwner, Observer<List<Film>> {
-            filmsDataBase = it
+        viewModel.filmsListLiveData.observe(viewLifecycleOwner, Observer<List<Film>> { films ->
+            filmsDataBase = films
         })
 
         searchView.setOnClickListener {
@@ -56,7 +55,6 @@ class HomeFragment : Fragment() {
 
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
-                // Обработка null значения
                 return true
             }
 

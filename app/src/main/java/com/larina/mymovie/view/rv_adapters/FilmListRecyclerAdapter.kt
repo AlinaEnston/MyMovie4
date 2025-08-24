@@ -1,10 +1,8 @@
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.larina.mymovie.domain.Film
 import com.larina.mymovie.databinding.FilmItemBinding
-
 
 class FilmListRecyclerAdapter(
     private val onItemClickListener: OnItemClickListener

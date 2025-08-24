@@ -7,11 +7,17 @@ import com.larina.mymovie.domain.Film
 import com.larina.mymovie.domain.Interactor
 
 class HomeFragmentViewModel : ViewModel() {
-    val filmsListLiveData:  MutableLiveData<List<Film>> = MutableLiveData()
-    //Инициализируем интерактор
+
+    val filmsListLiveData: MutableLiveData<List<Film>> = MutableLiveData()
+
+
     private var interactor: Interactor = App.instance.interactor
 
     init {
+        fetchFilms()
+    }
+
+    private fun fetchFilms() {
         interactor.getFilmsFromApi(1, object : ApiCallback {
             override fun onSuccess(films: List<Film>) {
                 filmsListLiveData.postValue(films)

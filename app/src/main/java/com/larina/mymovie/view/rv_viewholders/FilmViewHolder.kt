@@ -10,17 +10,23 @@ class FilmViewHolder(
 ) : RecyclerView.ViewHolder(binding.root) {
 
     fun bind(film: Film) {
+
         binding.title.text = film.title
+
+
         Glide.with(binding.root)
-            .load(ApiConstants.IMAGES_URL + "w342" + film.poster)
+            .load(ApiConstants.IMAGES_URL + "w342" + film.poster) // Construct the image URL
             .centerCrop()
             .into(binding.poster)
+
+
         binding.description.text = film.description
-        binding.ratingDonut.setProgress((film.rating * 10).toInt()) // Используем метод setProgress
+
+
+        binding.ratingDonut.setProgress((film.rating * 10).toInt()) // Assuming rating is out of 10
 
         binding.root.setOnClickListener {
             onItemClickListener.click(film)
         }
     }
 }
-   
