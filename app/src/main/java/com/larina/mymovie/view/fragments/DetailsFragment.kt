@@ -59,7 +59,6 @@ class DetailsFragment : Fragment() {
         } ?: run {
             // Обработка случая, если фильм не был передан
             binding.detailsDescription.text = "Описание недоступно"
-            binding.detailsPoster.setImageResource(R.drawable.poster_1) // Изображение по умолчанию
         }
     }
 
